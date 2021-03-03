@@ -119,7 +119,6 @@ function reducer(state, { type, payload }) {
 
 export default function Provider({ children }) {
   const [state, dispatch] = useReducer(reducer, {})
-debugger
   // update pair specific data
   const update = useCallback((pairAddress, data) => {
     dispatch({

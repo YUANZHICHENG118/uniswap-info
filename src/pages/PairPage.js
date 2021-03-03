@@ -201,89 +201,16 @@ function PairPage({ pairAddress, history }) {
 
   return (
     <PageWrapper>
-      <ThemedBackground backgroundColor={transparentize(0.6, backgroundColor)} />
-      <span />
-      <Warning
-        type={'pair'}
-        show={!dismissed && listedTokens && !(listedTokens.includes(token0?.id) && listedTokens.includes(token1?.id))}
-        setShow={markAsDismissed}
-        address={pairAddress}
-      />
+
       <ContentWrapperLarge>
-        <RowBetween>
-          <TYPE.body>
-            <BasicLink to="/pairs">{'Pairs '}</BasicLink>→ {token0?.symbol}-{token1?.symbol}
-          </TYPE.body>
-          {!below600 && <Search small={true} />}
-        </RowBetween>
+
         <WarningGrouping
           disabled={
             !dismissed && listedTokens && !(listedTokens.includes(token0?.id) && listedTokens.includes(token1?.id))
           }
         >
           <DashboardWrapper>
-            <AutoColumn gap="40px" style={{ marginBottom: '1.5rem' }}>
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  flexWrap: 'wrap',
-                  width: '100%',
-                }}
-              >
-                <RowFixed style={{ flexWrap: 'wrap', minWidth: '100px' }}>
-                  <RowFixed>
-                    {token0 && token1 && (
-                      <DoubleTokenLogo a0={token0?.id || ''} a1={token1?.id || ''} size={32} margin={true} />
-                    )}{' '}
-                    <TYPE.main fontSize={below1080 ? '1.5rem' : '2rem'} style={{ margin: '0 1rem' }}>
-                      {token0 && token1 ? (
-                        <>
-                          <HoverSpan onClick={() => history.push(`/token/${token0?.id}`)}>{token0.symbol}</HoverSpan>
-                          <span>-</span>
-                          <HoverSpan onClick={() => history.push(`/token/${token1?.id}`)}>
-                            {token1.symbol}
-                          </HoverSpan>{' '}
-                          Pair
-                        </>
-                      ) : (
-                        ''
-                      )}
-                    </TYPE.main>
-                  </RowFixed>
-                </RowFixed>
-                <RowFixed
-                  ml={below900 ? '0' : '2.5rem'}
-                  mt={below1080 && '1rem'}
-                  style={{
-                    flexDirection: below1080 ? 'row-reverse' : 'initial',
-                  }}
-                >
-                  {!!!savedPairs[pairAddress] && !below1080 ? (
-                    <Hover onClick={() => addPair(pairAddress, token0.id, token1.id, token0.symbol, token1.symbol)}>
-                      <StyledIcon>
-                        <PlusCircle style={{ marginRight: '0.5rem' }} />
-                      </StyledIcon>
-                    </Hover>
-                  ) : !below1080 ? (
-                    <StyledIcon>
-                      <Bookmark style={{ marginRight: '0.5rem', opacity: 0.4 }} />
-                    </StyledIcon>
-                  ) : (
-                    <></>
-                  )}
 
-                  <Link external href={getPoolLink(token0?.id, token1?.id)}>
-                    <ButtonLight color={backgroundColor}>+ Add Liquidity</ButtonLight>
-                  </Link>
-                  <Link external href={getSwapLink(token0?.id, token1?.id)}>
-                    <ButtonDark ml={!below1080 && '.5rem'} mr={below1080 && '.5rem'} color={backgroundColor}>
-                      Trade
-                    </ButtonDark>
-                  </Link>
-                </RowFixed>
-              </div>
-            </AutoColumn>
             <AutoRow
               gap="6px"
               style={{
@@ -305,22 +232,34 @@ function PairPage({ pairAddress, history }) {
                   </TYPE.main>
                 </RowFixed>
               </FixedPanel>
-              <FixedPanel onClick={() => history.push(`/token/${token1?.id}`)}>
-                <RowFixed>
-                  <TokenLogo address={token1?.id} size={'16px'} />
-                  <TYPE.main fontSize={'16px'} lineHeight={1} fontWeight={500} ml={'4px'}>
-                    {token0 && token1
-                      ? `1 ${formattedSymbol1} = ${token1Rate} ${formattedSymbol0}  ${
-                          parseFloat(token1?.derivedETH) ? '(' + token1USD + ')' : ''
-                        }`
-                      : '-'}
-                  </TYPE.main>
-                </RowFixed>
-              </FixedPanel>
+              {/*<FixedPanel onClick={() => history.push(`/token/${token1?.id}`)}>*/}
+                {/*<RowFixed>*/}
+                  {/*<TokenLogo address={token1?.id} size={'16px'} />*/}
+                  {/*<TYPE.main fontSize={'16px'} lineHeight={1} fontWeight={500} ml={'4px'}>*/}
+                    {/*{token0 && token1*/}
+                      {/*? `1 ${formattedSymbol1} = ${token1Rate} ${formattedSymbol0}  ${*/}
+                          {/*parseFloat(token1?.derivedETH) ? '(' + token1USD + ')' : ''*/}
+                        {/*}`*/}
+                      {/*: '-'}*/}
+                  {/*</TYPE.main>*/}
+                {/*</RowFixed>*/}
+              {/*</FixedPanel>*/}
             </AutoRow>
             <>
-              {!below1080 && <TYPE.main fontSize={'1.125rem'}>Pair Stats</TYPE.main>}
               <PanelWrapper style={{ marginTop: '1.5rem' }}>
+                <Panel
+                  style={{
+                    gridColumn: below1080 ? '1' : '2/4',
+                    gridRow: below1080 ? '' : '1/5',
+                  }}
+                >
+                  <PairChart
+                    address={pairAddress}
+                    color={backgroundColor}
+                    base0={reserve1 / reserve0}
+                    base1={reserve0 / reserve1}
+                  />
+                </Panel>
                 <Panel style={{ height: '100%' }}>
                   <AutoColumn gap="20px">
                     <RowBetween>
@@ -394,95 +333,9 @@ function PairPage({ pairAddress, history }) {
                     </Hover>
                   </AutoColumn>
                 </Panel>
-                <Panel
-                  style={{
-                    gridColumn: below1080 ? '1' : '2/4',
-                    gridRow: below1080 ? '' : '1/5',
-                  }}
-                >
-                  <PairChart
-                    address={pairAddress}
-                    color={backgroundColor}
-                    base0={reserve1 / reserve0}
-                    base1={reserve0 / reserve1}
-                  />
-                </Panel>
+
               </PanelWrapper>
-              <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '3rem' }}>
-                Transactions
-              </TYPE.main>{' '}
-              <Panel
-                style={{
-                  marginTop: '1.5rem',
-                }}
-              >
-                {transactions ? <TxnList transactions={transactions} /> : <Loader />}
-              </Panel>
-              <RowBetween style={{ marginTop: '3rem' }}>
-                <TYPE.main fontSize={'1.125rem'}>Pair Information</TYPE.main>{' '}
-              </RowBetween>
-              <Panel
-                rounded
-                style={{
-                  marginTop: '1.5rem',
-                }}
-                p={20}
-              >
-                <TokenDetailsLayout>
-                  <Column>
-                    <TYPE.main>Pair Name</TYPE.main>
-                    <TYPE.main style={{ marginTop: '.5rem' }}>
-                      <RowFixed>
-                        <FormattedName text={token0?.symbol ?? ''} maxCharacters={8} />
-                        -
-                        <FormattedName text={token1?.symbol ?? ''} maxCharacters={8} />
-                      </RowFixed>
-                    </TYPE.main>
-                  </Column>
-                  <Column>
-                    <TYPE.main>Pair Address</TYPE.main>
-                    <AutoRow align="flex-end">
-                      <TYPE.main style={{ marginTop: '.5rem' }}>
-                        {pairAddress.slice(0, 6) + '...' + pairAddress.slice(38, 42)}
-                      </TYPE.main>
-                      <CopyHelper toCopy={pairAddress} />
-                    </AutoRow>
-                  </Column>
-                  <Column>
-                    <TYPE.main>
-                      <RowFixed>
-                        <FormattedName text={token0?.symbol ?? ''} maxCharacters={8} />{' '}
-                        <span style={{ marginLeft: '4px' }}>Address</span>
-                      </RowFixed>
-                    </TYPE.main>
-                    <AutoRow align="flex-end">
-                      <TYPE.main style={{ marginTop: '.5rem' }}>
-                        {token0 && token0.id.slice(0, 6) + '...' + token0.id.slice(38, 42)}
-                      </TYPE.main>
-                      <CopyHelper toCopy={token0?.id} />
-                    </AutoRow>
-                  </Column>
-                  <Column>
-                    <TYPE.main>
-                      <RowFixed>
-                        <FormattedName text={token1?.symbol ?? ''} maxCharacters={8} />{' '}
-                        <span style={{ marginLeft: '4px' }}>Address</span>
-                      </RowFixed>
-                    </TYPE.main>
-                    <AutoRow align="flex-end">
-                      <TYPE.main style={{ marginTop: '.5rem' }} fontSize={16}>
-                        {token1 && token1.id.slice(0, 6) + '...' + token1.id.slice(38, 42)}
-                      </TYPE.main>
-                      <CopyHelper toCopy={token1?.id} />
-                    </AutoRow>
-                  </Column>
-                  <ButtonLight color={backgroundColor}>
-                    <Link color={backgroundColor} external href={'https://etherscan.io/address/' + pairAddress}>
-                      View on Etherscan ↗
-                    </Link>
-                  </ButtonLight>
-                </TokenDetailsLayout>
-              </Panel>
+
             </>
           </DashboardWrapper>
         </WarningGrouping>

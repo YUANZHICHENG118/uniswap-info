@@ -1,6 +1,6 @@
 {
-  "short_name": "Uniswap Info",
-  "name": "View statistics for Uniswap exchanges.",
+  "short_name": "CM Info",
+  "name": "View statistics for CM exchanges.",
   "icons": [
     {
       "src": "favicon.ico",

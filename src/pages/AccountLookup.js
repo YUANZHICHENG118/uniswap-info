@@ -37,7 +37,7 @@ function AccountLookup() {
           {!below600 && <Search small={true} />}
         </RowBetween>
         <AccountWrapper>
-          <AccountSearch />
+          {/*<AccountSearch />*/}
         </AccountWrapper>
         <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '2rem' }}>
           Top Liquidity Positions

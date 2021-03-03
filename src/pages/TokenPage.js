@@ -227,29 +227,7 @@ function TokenPage({ address, history }) {
                 </RowFixed>
               </RowFixed>
               <span>
-                <RowFixed ml={below500 ? '0' : '2.5rem'} mt={below500 ? '1rem' : '0'}>
-                  {!!!savedTokens[address] && !below800 ? (
-                    <Hover onClick={() => addToken(address, symbol)}>
-                      <StyledIcon>
-                        <PlusCircle style={{ marginRight: '0.5rem' }} />
-                      </StyledIcon>
-                    </Hover>
-                  ) : !below1080 ? (
-                    <StyledIcon>
-                      <Bookmark style={{ marginRight: '0.5rem', opacity: 0.4 }} />
-                    </StyledIcon>
-                  ) : (
-                    <></>
-                  )}
-                  <Link href={getPoolLink(address)} target="_blank">
-                    <ButtonLight color={backgroundColor}>+ Add Liquidity</ButtonLight>
-                  </Link>
-                  <Link href={getSwapLink(address)} target="_blank">
-                    <ButtonDark ml={'.5rem'} mr={below1080 && '.5rem'} color={backgroundColor}>
-                      Trade
-                    </ButtonDark>
-                  </Link>
-                </RowFixed>
+
               </span>
             </RowBetween>
 
@@ -326,24 +304,24 @@ function TokenPage({ address, history }) {
               </PanelWrapper>
             </>
 
-            <span>
-              <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '3rem' }}>
-                Top Pairs
-              </TYPE.main>
-            </span>
-            <Panel
-              rounded
-              style={{
-                marginTop: '1.5rem',
-                padding: '1.125rem 0 ',
-              }}
-            >
-              {address && fetchedPairsList ? (
-                <PairList color={backgroundColor} address={address} pairs={fetchedPairsList} />
-              ) : (
-                <Loader />
-              )}
-            </Panel>
+            {/*<span>*/}
+              {/*<TYPE.main fontSize={'1.125rem'} style={{ marginTop: '3rem' }}>*/}
+                {/*Top Pairs*/}
+              {/*</TYPE.main>*/}
+            {/*</span>*/}
+            {/*<Panel*/}
+              {/*rounded*/}
+              {/*style={{*/}
+                {/*marginTop: '1.5rem',*/}
+                {/*padding: '1.125rem 0 ',*/}
+              {/*}}*/}
+            {/*>*/}
+              {/*{address && fetchedPairsList ? (*/}
+                {/*<PairList color={backgroundColor} address={address} pairs={fetchedPairsList} />*/}
+              {/*) : (*/}
+                {/*<Loader />*/}
+              {/*)}*/}
+            {/*</Panel>*/}
             <RowBetween mt={40} mb={'1rem'}>
               <TYPE.main fontSize={'1.125rem'}>Transactions</TYPE.main> <div />
             </RowBetween>
