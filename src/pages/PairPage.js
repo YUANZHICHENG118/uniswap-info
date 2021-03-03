@@ -201,7 +201,12 @@ function PairPage({ pairAddress, history }) {
 
   return (
     <PageWrapper>
-
+      <Warning
+        type={'pair'}
+        show={!dismissed && listedTokens && !(listedTokens.includes(token0?.id) && listedTokens.includes(token1?.id))}
+        setShow={markAsDismissed}
+        address={pairAddress}
+      />
       <ContentWrapperLarge>
 
         <WarningGrouping
