@@ -22,8 +22,8 @@ const Wrapper = styled.div`
   top: 0px;
   z-index: 9999;
   box-sizing: border-box;
-  /* background-color: #1b1c22; */
-  background: linear-gradient(193.68deg, #1b1c22 0.68%, #000000 100.48%);
+   background-color: #21170d; 
+ /* background: linear-gradient(193.68deg, #1b1c22 0.68%, #000000 100.48%); */
   color: ${({ theme }) => theme.bg2};
 
   @media screen and (max-width: 800px) {
@@ -32,7 +32,7 @@ const Wrapper = styled.div`
   }
 
   @media screen and (max-width: 600px) {
-    padding: 1rem;
+    padding: 0rem;
   }
 `
 
