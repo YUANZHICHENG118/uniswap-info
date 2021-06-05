@@ -156,7 +156,7 @@ export async function getBlockFromTimestamp(timestamp) {
  * @dev blocks are returned in chronological order (ASC) regardless of input.
  * @dev blocks are returned at string representations of Int
  * @dev timestamps are returns as they were provided; not the block time.
- * @param {Array} timestamps
+ * @param {Array} timestamps1
  */
 export async function getBlocksFromTimestamps(timestamps, skipCount = 500) {
   if (timestamps?.length === 0) {
@@ -164,7 +164,7 @@ export async function getBlocksFromTimestamps(timestamps, skipCount = 500) {
   }
 
   let fetchedData = await splitQuery(GET_BLOCKS, blockClient, [], timestamps, skipCount)
-
+  
   let blocks = []
   if (fetchedData) {
     for (var t in fetchedData) {
@@ -441,6 +441,8 @@ export const get2DayPercentChange = (valueNow, value24HoursAgo, value48HoursAgo)
   if (isNaN(adjustedPercentChange) || !isFinite(adjustedPercentChange)) {
     return [currentChange, 0]
   }
+  console.log("currentChange======",currentChange)
+
   return [currentChange, adjustedPercentChange]
 }
 

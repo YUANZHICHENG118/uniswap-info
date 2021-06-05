@@ -244,6 +244,8 @@ async function getBulkPairData(pairList, ethPrice) {
             })
             oneWeekHistory = newData.data.pairs[0]
           }
+
+          debugger
           data = parseData(data, oneDayHistory, twoDayHistory, oneWeekHistory, ethPrice, b1)
           return data
         })
@@ -276,6 +278,7 @@ function parseData(data, oneDayData, twoDayData, oneWeekData, ethPrice, oneDayBl
   data.volumeChangeUntracked = volumeChangeUntracked
 
   // set liquiditry properties
+  debugger
   data.trackedReserveUSD = data.trackedReserveETH * ethPrice
   data.liquidityChangeUSD = getPercentChange(data.reserveUSD, oneDayData?.reserveUSD)
 
@@ -574,6 +577,7 @@ export function usePairData(pairAddress) {
     async function fetchData() {
       if (!pairData && pairAddress) {
         let data = await getBulkPairData([pairAddress], ethPrice)
+        console.log("pairData====",data)
         data && update(pairAddress, data[0])
       }
     }

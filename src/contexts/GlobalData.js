@@ -223,7 +223,6 @@ async function getGlobalData(ethPrice, oldEthPrice) {
     const utcTwoDaysBack = utcCurrentTime.subtract(2, 'day').unix()
     const utcOneWeekBack = utcCurrentTime.subtract(1, 'week').unix()
     const utcTwoWeeksBack = utcCurrentTime.subtract(2, 'week').unix()
-
     // get the blocks needed for time travel queries
     let [oneDayBlock, twoDayBlock, oneWeekBlock, twoWeekBlock] = await getBlocksFromTimestamps([
       utcOneDayBack,
@@ -231,6 +230,7 @@ async function getGlobalData(ethPrice, oldEthPrice) {
       utcOneWeekBack,
       utcTwoWeeksBack,
     ])
+
 
     // fetch the global data
     let result = await client.query({
@@ -276,12 +276,15 @@ async function getGlobalData(ethPrice, oldEthPrice) {
         oneWeekData.totalVolumeUSD,
         twoWeekData.totalVolumeUSD
       )
+      console.log("======222",data.txCount)
 
+      debugger
       const [oneDayTxns, txnChange] = get2DayPercentChange(
         data.txCount,
         oneDayData.txCount ? oneDayData.txCount : 0,
         twoDayData.txCount ? twoDayData.txCount : 0
       )
+      console.log("======333",data.txCount)
 
       // format the total liquidity in USD
       data.totalLiquidityUSD = data.totalLiquidityETH * ethPrice

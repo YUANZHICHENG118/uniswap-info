@@ -331,11 +331,14 @@ const getTokenData = async (address, ethPrice, ethPriceOld) => {
 
   try {
     // fetch all current and historical data
+    debugger
     let result = await client.query({
       query: TOKEN_DATA(address),
       fetchPolicy: 'cache-first',
     })
     data = result?.data?.tokens?.[0]
+
+    console.log("TOKEN_DATA111=====",TOKEN_DATA(address),data,result)
 
     // get results from 24 hours in past
     let oneDayResult = await client.query({
@@ -632,6 +635,7 @@ export function Updater() {
 export function useTokenData(tokenAddress) {
   const [state, { update }] = useTokenDataContext()
   const [ethPrice, ethPriceOld] = useEthPrice()
+  console.log("ethPrice===",ethPrice,ethPriceOld)
   const tokenData = state?.[tokenAddress]
 
   useEffect(() => {

@@ -128,12 +128,15 @@ function PairPage({ pairAddress, history }) {
   const transactions = usePairTransactions(pairAddress)
   const backgroundColor = useColor(pairAddress)
 
+  console.log("trackedReserveUSD====",trackedReserveUSD,reserveUSD)
   // liquidity
   const liquidity = trackedReserveUSD
     ? formattedNum(trackedReserveUSD, true)
     : reserveUSD
     ? formattedNum(reserveUSD, true)
     : '-'
+  console.log("liquidity====",liquidity)
+
   const liquidityChange = formattedPercent(liquidityChangeUSD)
 
   // mark if using untracked liquidity
