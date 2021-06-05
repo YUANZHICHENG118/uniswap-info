@@ -38,7 +38,7 @@ const DashboardWrapper = styled.div`
 const PanelWrapper = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: max-content;
-  gap: 6px;
+  gap: 20px;
   display: inline-grid;
   width: 100%;
   align-items: start;
@@ -169,7 +169,7 @@ function TokenPage({ address, history }) {
 
   return (
     <PageWrapper>
-      <ThemedBackground backgroundColor={transparentize(0.6, backgroundColor)} />
+      {/*<ThemedBackground backgroundColor={transparentize(0.6, backgroundColor)} />*/}
 
       <Warning
         type={'token'}
@@ -295,7 +295,7 @@ function TokenPage({ address, history }) {
                 </Panel>
                 <Panel
                   style={{
-                    gridColumn: below1080 ? '1' : '2/4',
+                    gridColumn: below1080 ? '1/4' : '2/4',
                     gridRow: below1080 ? '' : '1/4',
                   }}
                 >

@@ -14,7 +14,7 @@ const theme = (darkMode, color) => ({
   customColor: color,
   textColor: darkMode ? color : 'black',
 
-  panelColor: darkMode ? 'rgba(255, 255, 255, 0)' : 'rgba(255, 255, 255, 0)',
+  panelColor: darkMode ? 'rgba(254, 193, 143, 0.2)' : 'rgba(255, 255, 255, 0)',
   backgroundColor: darkMode ? '#21170d' : '#F7F8FA',
 
   uniswapPink: darkMode ? '#ff007a' : 'black',
@@ -24,7 +24,7 @@ const theme = (darkMode, color) => ({
   shadowColor: darkMode ? '#000' : '#2F80ED',
   mercuryGray: darkMode ? '#333333' : '#E1E1E1',
 
-  text1: darkMode ? '#FAFAFA' : '#1F1F1F',
+  text1: darkMode ? '#FFDBBE' : '#1F1F1F',
   text2: darkMode ? '#C3C5CB' : '#565A69',
   text3: darkMode ? '#6C7284' : '#888D9B',
   text4: darkMode ? '#565A69' : '#C3C5CB',
@@ -34,9 +34,9 @@ const theme = (darkMode, color) => ({
   white: '#FFFFFF',
 
   // backgrounds / greys
-  bg1: darkMode ? '#21170d' : '#FAFAFA',
+  bg1: darkMode ? '#3C210A' : '#FAFAFA',
   bg2: darkMode ? '#2C2F36' : '#F7F8FA',
-  bg3: darkMode ? '#844515' : '#EDEEF2',
+  bg3: darkMode ? '#FEC18F' : '#EDEEF2',
   bg4: darkMode ? '#565A69' : '#CED0D9',
   bg5: darkMode ? '#565A69' : '#888D9B',
   bg6: darkMode ? '#21170d' : '#FFFFFF',
@@ -85,7 +85,7 @@ export const TYPE = {
   },
 
   body(props) {
-    return <TextWrapper fontWeight={400} fontSize={14} color={'text1'} {...props} />
+    return <TextWrapper fontWeight={600} fontSize={16} color={'text1'} {...props} />
   },
 
   small(props) {

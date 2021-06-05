@@ -26,9 +26,12 @@ const Panel = styled(RebassBox)`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  border-radius: 8px;
+  // border-radius: 8px;
+  box-shadow: 0px 1px 30px 0px #754218 inset;
+  border-radius: 4px;
+  // border: 1px solid #FEC18F;
   border: 1px solid ${({ theme }) => theme.bg3};
-  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.05); /* box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.01), 0px 16px 24px rgba(0, 0, 0, 0.01), 0px 24px 32px rgba(0, 0, 0, 0.01); */
+  // box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.05); /* box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.01), 0px 16px 24px rgba(0, 0, 0, 0.01), 0px 24px 32px rgba(0, 0, 0, 0.01); */
   :hover {
     cursor: ${({ hover }) => hover && 'pointer'};
     border: ${({ hover, theme }) => hover && '1px solid' + theme.bg5};
