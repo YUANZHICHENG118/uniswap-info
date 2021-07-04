@@ -1,4 +1,4 @@
-export const FACTORY_ADDRESS = '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f'
+export const FACTORY_ADDRESS = '0xDAe75a127472e7bc2755d7ef66C2E7E53e766cb3'
 
 export const BUNDLE_ID = '1'
 
@@ -12,10 +12,12 @@ export const timeframeOptions = {
 
 // token list urls to fetch tokens from - use for warnings on tokens and pairs
 export const SUPPORTED_LIST_URLS__NO_ENS = [
-  'https://gateway.ipfs.io/ipns/tokens.uniswap.org',
-  'https://www.coingecko.com/tokens_list/uniswap/defi_100/v_0_0_0.json',
+  'https://gateway.ipfs.io/ipns/tokens.uniswap.org'
 ]
-
+// export const SUPPORTED_LIST_URLS__NO_ENS = [
+//   'https://gateway.ipfs.io/ipns/tokens.uniswap.org',
+//   'https://www.coingecko.com/tokens_list/uniswap/defi_100/v_0_0_0.json',
+// ]
 // hide from overview list
 export const OVERVIEW_TOKEN_BLACKLIST = [
   '0x495c7f3a713870f68f8b418b355c085dfdc412c3',
