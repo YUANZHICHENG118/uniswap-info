@@ -147,6 +147,7 @@ function PairList({ pairs, color, disbaleLinks, maxItems = 10 }) {
   const ListItem = ({ pairAddress, index }) => {
     const pairData = pairs[pairAddress]
 
+    debugger
     if (pairData && pairData.token0 && pairData.token1) {
       const liquidity = formattedNum(pairData.reserveUSD, true)
       const volume = formattedNum(pairData.oneDayVolumeUSD, true)

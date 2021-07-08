@@ -477,6 +477,7 @@ const getIntervalTokenData = async (tokenAddress, startTime, interval = 3600, la
   const utcEndTime = dayjs.utc()
   let time = startTime
 
+
   // create an array of hour start times until we reach current hour
   // buffer by half hour to catch case where graph isnt synced to latest block
   const timestamps = []
@@ -490,6 +491,7 @@ const getIntervalTokenData = async (tokenAddress, startTime, interval = 3600, la
     return []
   }
 
+  debugger
   // once you have all the timestamps, get the blocks for each timestamp in a bulk query
   let blocks
   try {

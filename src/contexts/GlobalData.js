@@ -278,7 +278,6 @@ async function getGlobalData(ethPrice, oldEthPrice) {
       )
       console.log("======222",data.txCount)
 
-      debugger
       const [oneDayTxns, txnChange] = get2DayPercentChange(
         data.txCount,
         oneDayData.txCount ? oneDayData.txCount : 0,

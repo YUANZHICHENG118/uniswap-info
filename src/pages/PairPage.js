@@ -128,14 +128,14 @@ function PairPage({ pairAddress, history }) {
   const transactions = usePairTransactions(pairAddress)
   const backgroundColor = useColor(pairAddress)
 
-  console.log("trackedReserveUSD====",trackedReserveUSD,reserveUSD)
+  console.log('trackedReserveUSD====', trackedReserveUSD, reserveUSD)
   // liquidity
   const liquidity = trackedReserveUSD
     ? formattedNum(trackedReserveUSD, true)
     : reserveUSD
     ? formattedNum(reserveUSD, true)
     : '-'
-  console.log("liquidity====",liquidity)
+  console.log('liquidity====', liquidity)
 
   const liquidityChange = formattedPercent(liquidityChangeUSD)
 
@@ -211,14 +211,12 @@ function PairPage({ pairAddress, history }) {
         address={pairAddress}
       />
       <ContentWrapperLarge>
-
         <WarningGrouping
           disabled={
             !dismissed && listedTokens && !(listedTokens.includes(token0?.id) && listedTokens.includes(token1?.id))
           }
         >
           <DashboardWrapper>
-
             <AutoRow
               gap="6px"
               style={{
@@ -240,18 +238,18 @@ function PairPage({ pairAddress, history }) {
                   </TYPE.main>
                 </RowFixed>
               </FixedPanel>
-              {/*<FixedPanel onClick={() => history.push(`/token/${token1?.id}`)}>*/}
-                {/*<RowFixed>*/}
-                  {/*<TokenLogo address={token1?.id} size={'16px'} />*/}
-                  {/*<TYPE.main fontSize={'16px'} lineHeight={1} fontWeight={500} ml={'4px'}>*/}
-                    {/*{token0 && token1*/}
-                      {/*? `1 ${formattedSymbol1} = ${token1Rate} ${formattedSymbol0}  ${*/}
-                          {/*parseFloat(token1?.derivedETH) ? '(' + token1USD + ')' : ''*/}
-                        {/*}`*/}
-                      {/*: '-'}*/}
-                  {/*</TYPE.main>*/}
-                {/*</RowFixed>*/}
-              {/*</FixedPanel>*/}
+              <FixedPanel onClick={() => history.push(`/token/${token1?.id}`)}>
+                <RowFixed>
+                  <TokenLogo address={token1?.id} size={'16px'} />
+                  <TYPE.main fontSize={'16px'} lineHeight={1} fontWeight={500} ml={'4px'}>
+                    {token0 && token1
+                      ? `1 ${formattedSymbol1} = ${token1Rate} ${formattedSymbol0}  ${
+                          parseFloat(token1?.derivedETH) ? '(' + token1USD + ')' : ''
+                        }`
+                      : '-'}
+                  </TYPE.main>
+                </RowFixed>
+              </FixedPanel>
             </AutoRow>
             <>
               <PanelWrapper style={{ marginTop: '1.5rem' }}>
@@ -341,9 +339,7 @@ function PairPage({ pairAddress, history }) {
                     </Hover>
                   </AutoColumn>
                 </Panel>
-
               </PanelWrapper>
-
             </>
           </DashboardWrapper>
         </WarningGrouping>

@@ -304,24 +304,24 @@ function TokenPage({ address, history }) {
               </PanelWrapper>
             </>
 
-            {/*<span>*/}
-              {/*<TYPE.main fontSize={'1.125rem'} style={{ marginTop: '3rem' }}>*/}
-                {/*Top Pairs*/}
-              {/*</TYPE.main>*/}
-            {/*</span>*/}
-            {/*<Panel*/}
-              {/*rounded*/}
-              {/*style={{*/}
-                {/*marginTop: '1.5rem',*/}
-                {/*padding: '1.125rem 0 ',*/}
-              {/*}}*/}
-            {/*>*/}
-              {/*{address && fetchedPairsList ? (*/}
-                {/*<PairList color={backgroundColor} address={address} pairs={fetchedPairsList} />*/}
-              {/*) : (*/}
-                {/*<Loader />*/}
-              {/*)}*/}
-            {/*</Panel>*/}
+            <span>
+              <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '3rem' }}>
+                Top Pairs
+              </TYPE.main>
+            </span>
+            <Panel
+              rounded
+              style={{
+                marginTop: '1.5rem',
+                padding: '1.125rem 0 ',
+              }}
+            >
+              {address && fetchedPairsList ? (
+                <PairList color={backgroundColor} address={address} pairs={fetchedPairsList} />
+              ) : (
+                <Loader />
+              )}
+            </Panel>
             <RowBetween mt={40} mb={'1rem'}>
               <TYPE.main fontSize={'1.125rem'}>Transactions</TYPE.main> <div />
             </RowBetween>
