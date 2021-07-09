@@ -226,9 +226,7 @@ function TokenPage({ address, history }) {
                   )}
                 </RowFixed>
               </RowFixed>
-              <span>
-
-              </span>
+              <span></span>
             </RowBetween>
 
             <>
